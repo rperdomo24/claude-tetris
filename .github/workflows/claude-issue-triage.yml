@@ -62,7 +62,9 @@ jobs:
                lacks enough detail to diagnose, include "question" and say so.
                gh issue edit ${{ github.event.issue.number }} --add-label "<label>" [--add-label "<label2>"]
 
-            5. Write a full diagnosis with these sections:
+            5. Write a full diagnosis with these sections, formatted in GitHub-flavored
+               Markdown (headings, code fences for code/paths, bullet/numbered lists)
+               so it renders correctly on GitHub:
                - **Resumen**: 1-2 line summary of the problem.
                - **Zona sospechosa**: file:function (and line numbers if you found
                  them) most likely responsible.
