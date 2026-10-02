@@ -20,8 +20,8 @@ Then check the change by playing the game (there is no automated test to run ins
 
 Everything lives in `game.js` (~300 lines), driven by a single `requestAnimationFrame` loop (`loop()`), started by `init()` at the bottom of the file.
 
-- **Board model**: `board` is a `ROWS × COLS` matrix (20×10) of `0` (empty) or a color index `1–7` for a locked piece.
-- **Pieces**: `PIECES` are square matrices; `current`/`next` are `{ type, shape, x, y }`. Rotation is `rotateCW` (transpose + reverse), used by `tryRotate`, which tries wall-kick offsets `[0, -1, 1, -2, 2]` before giving up on a rotation.
+- **Board model**: `board` is a `ROWS × COLS` matrix (20×10) of `0` (empty) or a color index `1–8` for a locked piece.
+- **Pieces**: `PIECES` are square matrices (8 types, incl. index 8 = "nut", 3×3 ring with empty center); `current`/`next` are `{ type, shape, x, y }`. Rotation is `rotateCW` (transpose + reverse), used by `tryRotate`, which tries wall-kick offsets `[0, -1, 1, -2, 2]` before giving up on a rotation.
 - **Collision**: `collide(shape, ox, oy)` is the single source of truth for whether a shape placement is legal — bounds check + overlap with locked board cells. Movement, rotation, ghost-piece projection, and spawn-collision (game over) all route through it.
 - **Lock/clear cycle**: `lockPiece()` → `merge()` (bake piece into `board`) → `clearLines()` (bottom-up full-row sweep, splice + unshift empty row at top) → `spawn()` (promote `next` to `current`, generate new `next`, check for immediate collision = game over).
 - **Scoring/leveling**: `LINE_SCORES = [0,100,300,500,800]` × `level`; hard drop adds `2 × rows dropped`; soft drop adds `1` per row. Level = `floor(lines/10)+1`; `dropInterval = max(100, 1000 - (level-1)*90)` ms.
