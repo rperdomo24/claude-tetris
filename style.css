@@ -22,6 +22,7 @@ body {
   --restart-bg: #7aa2f7;
   --restart-hover-bg: #9bbdff;
   --restart-color: #0f0f17;
+  --menu-focus: #ffffff;
 
   background: var(--bg);
   color: var(--text);
@@ -51,6 +52,7 @@ body.light-theme {
   --restart-bg: #3f5fb5;
   --restart-hover-bg: #5a7bd6;
   --restart-color: #ffffff;
+  --menu-focus: #23232f;
 }
 
 .wrapper {
@@ -197,6 +199,80 @@ kbd {
 
 #restart-btn:hover {
   background: var(--restart-hover-bg);
+}
+
+/* ---- Menú de pausa ---- */
+.hidden {
+  display: none !important;
+}
+
+.pause-title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  color: var(--overlay-title);
+}
+
+.menu-btn {
+  background: var(--restart-bg);
+  color: var(--restart-color);
+  border: none;
+  border-radius: 6px;
+  padding: 10px 28px;
+  min-width: 170px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: background 0.15s;
+}
+
+.menu-btn:hover {
+  background: var(--restart-hover-bg);
+}
+
+.menu-btn:focus-visible {
+  outline: 2px solid var(--menu-focus);
+  outline-offset: 2px;
+}
+
+.menu-btn.small {
+  min-width: 0;
+  padding: 6px 14px;
+}
+
+.level-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.level-stepper {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.menu-hint {
+  font-size: 11px;
+  color: var(--controls-color);
+}
+
+.pause-keys {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--controls-color);
+}
+
+.pause-keys li {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 /* ---- Theme toggle ---- */
