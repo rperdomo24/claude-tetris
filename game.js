@@ -382,6 +382,7 @@ function init() {
 }
 
 document.addEventListener('keydown', e => {
+  if (document.activeElement === skinSelect) return; // let the select handle its own keys
   if (e.code === 'KeyP') { togglePause(); return; }
   if (paused || gameOver) return;
   switch (e.code) {
