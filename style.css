@@ -245,3 +245,14 @@ kbd {
 .switch input:checked + .slider::before {
   transform: translateX(18px);
 }
+
+/* ---- Skin selector ---- */
+#skin-select {
+  background: var(--kbd-bg);
+  color: var(--text);
+  border: 1px solid var(--kbd-border);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 12px;
+  cursor: pointer;
+}
